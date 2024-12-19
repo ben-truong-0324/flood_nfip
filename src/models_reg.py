@@ -47,7 +47,7 @@ import numpy as np
 
 class MLPRegressionRelu(nn.Module):
     def __init__(self, input_dim, output_dim, hidden_dim=2048, dropout_rate=0.1):
-        super(MLPRegression, self).__init__()
+        super(MLPRegressionRelu, self).__init__()
         self.dropout = nn.Dropout(dropout_rate)
         
         self.fc1 = nn.Linear(input_dim, hidden_dim)
@@ -67,7 +67,7 @@ class MLPRegressionRelu(nn.Module):
 
 class MLPRegressionReluTanh(nn.Module):
     def __init__(self, input_dim, output_dim, hidden_dim=2048, dropout_rate=0.1):
-        super(MLPRegression1, self).__init__()
+        super(MLPRegressionReluTanh, self).__init__()
         self.dropout = nn.Dropout(dropout_rate)
         
         self.fc1 = nn.Linear(input_dim, hidden_dim)
