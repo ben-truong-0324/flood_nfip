@@ -82,6 +82,45 @@ class MLPRegressionReluTanh(nn.Module):
         return self.fc3(x)  
     
 
+class MLPRegressionTanhReluTanh(nn.Module):
+    def __init__(self, input_dim, output_dim, hidden_dim=2048, dropout_rate=0.1):
+        super(MLPRegressionTanhReluTanh, self).__init__()
+        self.dropout = nn.Dropout(dropout_rate)
+        
+        self.fc1 = nn.Linear(input_dim, hidden_dim)
+        self.fc2 = nn.Linear(hidden_dim, hidden_dim)
+        self.fc3 = nn.Linear(hidden_dim, hidden_dim // 2)
+        self.fc4 = nn.Linear(hidden_dim // 2, output_dim)
+
+    def forward(self, x):
+        x = torch.tanh(self.fc1(x))
+        x = self.dropout(x)
+        x = torch.relu(self.fc2(x))
+        x = self.dropout(x)
+        x = torch.tanh(self.fc3(x))
+        x = self.dropout(x)
+        return self.fc4(x)  
+    
+class MLPRegressionTanhReluTanhRelu(nn.Module):
+    def __init__(self, input_dim, output_dim, hidden_dim=2048, dropout_rate=0.1):
+        super(MLPRegressionTanhReluTanhRelu, self).__init__()
+        self.dropout = nn.Dropout(dropout_rate)
+        
+        self.fc1 = nn.Linear(input_dim, hidden_dim)
+        self.fc2 = nn.Linear(hidden_dim, hidden_dim)
+        self.fc3 = nn.Linear(hidden_dim, hidden_dim // 2)
+        self.fc4 = nn.Linear(hidden_dim // 2, output_dim)
+
+    def forward(self, x):
+        x = torch.tanh(self.fc1(x))
+        x = self.dropout(x)
+        x = torch.relu(self.fc2(x))
+        x = self.dropout(x)
+        x = torch.tanh(self.fc3(x))
+        x = self.dropout(x)
+        return torch.relu(self.fc4(x))
+    
+
 class CNNRegression(nn.Module):
     def __init__(self, input_dim, output_dim, kernel_size, hidden_dim, dropout_rate):
         super(CNNRegression, self).__init__()

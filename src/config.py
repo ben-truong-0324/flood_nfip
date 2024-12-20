@@ -10,7 +10,8 @@ else:
 import os
 
 EVAL_REG_MODELS = [
-    'MPLRelu', 'MPLReluTanh',
+    # 'MPLRelu', 'MPLReluTanh',
+    'MPLTanhReluTanh', 'MPLTanhReluTanhRelu',
     # 'LSTM', 
     # 'CNN',
     # 'SalienceNN',
