@@ -1,11 +1,12 @@
-# Kaggle Housing ML Project
+# Flood NFIP Insurance Prediction Project
 
-This project leverages machine learning models to predict housing prices based on the Kaggle House Prices: Advanced Regression Techniques dataset. We explore a variety of techniques, including decision trees, bagging, and boosting, to predict home prices in Ames, Iowa, using the provided explanatory variables. This project covers data preprocessing, model training, evaluation, and result visualization.
+This project leverages machine learning models to predict flood risk and insurance premiums based on the National Flood Insurance Program (NFIP) data. We explore a variety of techniques, including decision trees, bagging, and boosting, to predict the flood risk and associated insurance premiums for properties based on historical and geographical data.
 
 ## Project Overview
 
-Data is retrieved from https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques/data
-In this competition, participants are tasked with predicting the final sale price of homes in Ames, Iowa, based on 79 explanatory variables. These variables cover almost every aspect of residential homes, from architectural features to neighborhood characteristics. The goal is to develop models that can predict home prices accurately using regression techniques.
+Data is retrieved from [NFIP Data Source](https://www.fema.gov/openfema-data-page/fima-nfip-redacted-claims-v2).  
+In this project, we aim to predict flood risk and the corresponding insurance premiums using the provided NFIP dataset. This dataset includes multiple features such as property characteristics, flood zone designations, historical flood events, and policy information. Our goal is to develop models that can predict flood risk and premiums accurately using various regression and classification techniques.
+
 
 ## Installation and Setup
 
@@ -17,7 +18,7 @@ To set up the project, it is recommended to use the provided `environment.yml` f
 conda env create -f environment.yml
 conda env update --file environment.yml --prune
 conda activate ml_general
-python -m house_regression.ml
+python -m flood_nfip.ml
 
 # download/copy data into ./data/
 ```

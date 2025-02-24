@@ -9,14 +9,55 @@ else:
 
 import os
 
+
+#define/create dir for outputs
+def set_output_dir(outpath):
+    os.makedirs(outpath, exist_ok=True)
+    return outpath
+
+EVAL_FUNC_METRIC = 'accuracy' #'f1' # 'accuracy' #for random srx implementation
+FARSIGHT_MODELS = [
+    # 'default',
+# 'MPL',
+# 'CNN', 
+'LSTM', 
+'bi-LSTM',
+#  'conv-LSTM', 
+                     #'seg-gru',
+                    ]
+
 EVAL_REG_MODELS = [
-    # 'MPLRelu', 'MPLReluTanh',
-    'MPLTanhReluTanh', 'MPLTanhReluTanhRelu',
+    'MPL', 'MPL1',
+    #  'MPL2', 'MPL3', 'MPL4', 
+    # 'MPL5',
+    # 'MPL6','MPL7',
+    # 'MPL8','MPL9',
     # 'LSTM', 
     # 'CNN',
     # 'SalienceNN',
+ 
 ]
+AGGREGATED_OUTDIR = set_output_dir(f'{OUTPUT_DIR_A3}/ver{DRAFT_VER_A3}_{EVAL_FUNC_METRIC}/agregated_graphs')
+Y_PRED_OUTDIR = set_output_dir(f'{OUTPUT_DIR_A3}/ver{DRAFT_VER_A3}_{EVAL_FUNC_METRIC}/y_pred_graphs')
+CV_LOSSES_PKL_OUTDIR = set_output_dir(f'{OUTPUT_DIR_A3}/ver{DRAFT_VER_A3}_{EVAL_FUNC_METRIC}/pkl_cv')
+TXT_OUTDIR = set_output_dir(f'{OUTPUT_DIR_A3}/ver{DRAFT_VER_A3}_{EVAL_FUNC_METRIC}/txt_stats')
 
+
+CLUSTER_PKL_OUTDIR = set_output_dir(f'{OUTPUT_DIR_A3}/ver{DRAFT_VER_A3}_{EVAL_FUNC_METRIC}/pkl')
+DREDUCED_CLUSTER_PKL_OUTDIR = set_output_dir(f'{OUTPUT_DIR_A3}/ver{DRAFT_VER_A3}_{EVAL_FUNC_METRIC}/pkl')
+CV_LOSSES_PKL_OUTDIR = set_output_dir(f'{OUTPUT_DIR_A3}/ver{DRAFT_VER_A3}_{EVAL_FUNC_METRIC}/pkl_cv')
+NN_PKL_OUTDIR = set_output_dir(f'{OUTPUT_DIR_A3}/ver{DRAFT_VER_A3}_{EVAL_FUNC_METRIC}/pkl_nn')
+
+
+NN_CLUSTERED_DREDUCED_PKL_OUTDIR = set_output_dir(f'{OUTPUT_DIR_A3}/ver{DRAFT_VER_A3}_{EVAL_FUNC_METRIC}/cluster_of_reduced')
+CLUSTER_GRAPH_OUTDIR = set_output_dir(f'{OUTPUT_DIR_A3}/ver{DRAFT_VER_A3}_{EVAL_FUNC_METRIC}/cluster')
+DREDUCED_PKL_OUTDIR = set_output_dir(f'{OUTPUT_DIR_A3}/ver{DRAFT_VER_A3}_{EVAL_FUNC_METRIC}/dreduced_pickles')
+
+OUTPUT_DIR_RAW_DATA_A3 = f'{OUTPUT_DIR_A3}/ver{DRAFT_VER_A3}/raw_data_assessment'
+OUTPUT_DIR_CLUSTERING_BASELINE_A3 = f'{OUTPUT_DIR_A3}/ver{DRAFT_VER_A3}/baseline_cluster'
+
+
+ALL_DREDUCED_USEFULNESS_WITH_NN_PICKLE_PATH = f'{OUTPUT_DIR_A3}/ver{DRAFT_VER_A3}_{EVAL_FUNC_METRIC}/dreduced_pickles/nn_dreduced_all_results.pkl'
 
 K_FOLD_CV = 5  # Number of CV folds
 DREDUCE_NUM = 3

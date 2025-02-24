@@ -45,9 +45,9 @@ from torch.utils.data import DataLoader, TensorDataset
 from sklearn.cluster import KMeans
 import numpy as np
 
-class MLPRegressionRelu(nn.Module):
+class MLPRegression(nn.Module):
     def __init__(self, input_dim, output_dim, hidden_dim=2048, dropout_rate=0.1):
-        super(MLPRegressionRelu, self).__init__()
+        super(MLPRegression, self).__init__()
         self.dropout = nn.Dropout(dropout_rate)
         
         self.fc1 = nn.Linear(input_dim, hidden_dim)
@@ -57,7 +57,7 @@ class MLPRegressionRelu(nn.Module):
 
     def forward(self, x):
         # x = torch.relu(self.fc1(x))
-        x = torch.relu(self.fc1(x))
+        x = self.fc1(x)
         x = self.dropout(x)
         x = torch.relu(self.fc2(x))
         x = self.dropout(x)
@@ -65,61 +65,127 @@ class MLPRegressionRelu(nn.Module):
         x = self.dropout(x)
         return self.fc4(x)  
 
-class MLPRegressionReluTanh(nn.Module):
+class MLPRegression1(nn.Module):
     def __init__(self, input_dim, output_dim, hidden_dim=2048, dropout_rate=0.1):
-        super(MLPRegressionReluTanh, self).__init__()
+        super(MLPRegression1, self).__init__()
         self.dropout = nn.Dropout(dropout_rate)
         
+        self.fc1 = nn.Linear(input_dim, hidden_dim)
+        self.fc2 = nn.Linear(hidden_dim, output_dim)
+
+    def forward(self, x):
+        x = torch.relu(self.fc1(x))
+        x = self.dropout(x)
+        return self.fc2(x)  
+    
+
+class MLPRegression2(nn.Module):
+    def __init__(self, input_dim, output_dim, hidden_dim=2048, dropout_rate=0.1):
+        super(MLPRegression2, self).__init__()
+        self.dropout = nn.Dropout(dropout_rate)
+        
+        self.fc1 = nn.Linear(input_dim, hidden_dim)
+        self.fc2 = nn.Linear(hidden_dim, output_dim)
+
+    def forward(self, x):
+        x = self.fc1(x)
+        x = self.dropout(x)
+        return self.fc2(x)  
+    
+class MLPRegression3(nn.Module):
+    def __init__(self, input_dim, output_dim, hidden_dim=2048, dropout_rate=0.1):
+        super(MLPRegression3, self).__init__()
+        self.dropout = nn.Dropout(dropout_rate)
+        
+        self.fc1 = nn.Linear(input_dim, hidden_dim)
+        self.fc2 = nn.Linear(hidden_dim, output_dim)
+
+    def forward(self, x):
+        x = torch.tanh(self.fc1(x))
+        x = self.dropout(x)
+        return self.fc2(x)  
+    
+class MLPRegression4(nn.Module):
+    def __init__(self, input_dim, output_dim, hidden_dim=2048, dropout_rate=0.1):
+        super(MLPRegression4, self).__init__()
+        self.dropout = nn.Dropout(dropout_rate)
+        
+        self.fc1 = nn.Linear(input_dim, hidden_dim)
+        self.fc2 = nn.Linear(hidden_dim, output_dim)
+
+    def forward(self, x):
+        x = torch.tanh(self.fc1(x))
+        x = self.dropout(x)
+        return torch.tanh(self.fc2(x))
+    
+class MLPRegression5(nn.Module):
+    def __init__(self, input_dim, output_dim, hidden_dim=2048, dropout_rate=0.1):
+        super(MLPRegression5, self).__init__()
+        self.dropout = nn.Dropout(dropout_rate)
+        
+        self.fc1 = nn.Linear(input_dim, hidden_dim)
+        self.fc2 = nn.Linear(hidden_dim, output_dim)
+
+    def forward(self, x):
+        x = torch.relu(self.fc1(x))
+        x = self.dropout(x)
+        return torch.tanh(self.fc2(x))
+    
+class MLPRegression6(nn.Module):
+    def __init__(self, input_dim, output_dim, hidden_dim=2048, dropout_rate=0.1):
+        super(MLPRegression6, self).__init__()
+        self.dropout = nn.Dropout(dropout_rate)
+        
+        self.fc1 = nn.Linear(input_dim, hidden_dim)
+        self.fc2 = nn.Linear(hidden_dim, output_dim)
+
+    def forward(self, x):
+        x = torch.relu(self.fc1(x))
+        x = self.dropout(x)
+        return torch.relu(self.fc2(x))
+    
+class MLPRegression7(nn.Module):
+    def __init__(self, input_dim, output_dim, hidden_dim=2048, dropout_rate=0.1):
+        super(MLPRegression7, self).__init__()
+        self.dropout = nn.Dropout(dropout_rate)
+        
+        self.fc1 = nn.Linear(input_dim, hidden_dim)
+        self.fc2 = nn.Linear(hidden_dim, output_dim)
+
+    def forward(self, x):
+        x = torch.tanh(self.fc1(x))
+        x = self.dropout(x)
+        return torch.relu(self.fc2(x))
+
+class MLPRegression8(nn.Module):
+    def __init__(self, input_dim, output_dim, hidden_dim=2048, dropout_rate=0.1):
+        super(MLPRegression8, self).__init__()
+        self.dropout = nn.Dropout(dropout_rate)
         self.fc1 = nn.Linear(input_dim, hidden_dim)
         self.fc2 = nn.Linear(hidden_dim, hidden_dim // 2)
         self.fc3 = nn.Linear(hidden_dim // 2, output_dim)
 
     def forward(self, x):
-        x = torch.tanh(self.fc1(x))
+        x = torch.relu(self.fc1(x))
         x = self.dropout(x)
         x = torch.relu(self.fc2(x))
         x = self.dropout(x)
-        return self.fc3(x)  
+        return torch.relu(self.fc3(x))
     
-
-class MLPRegressionTanhReluTanh(nn.Module):
+class MLPRegression9(nn.Module):
     def __init__(self, input_dim, output_dim, hidden_dim=2048, dropout_rate=0.1):
-        super(MLPRegressionTanhReluTanh, self).__init__()
+        super(MLPRegression9, self).__init__()
         self.dropout = nn.Dropout(dropout_rate)
-        
         self.fc1 = nn.Linear(input_dim, hidden_dim)
-        self.fc2 = nn.Linear(hidden_dim, hidden_dim)
-        self.fc3 = nn.Linear(hidden_dim, hidden_dim // 2)
-        self.fc4 = nn.Linear(hidden_dim // 2, output_dim)
+        self.fc2 = nn.Linear(hidden_dim, hidden_dim // 2)
+        self.fc3 = nn.Linear(hidden_dim // 2, output_dim)
 
     def forward(self, x):
-        x = torch.tanh(self.fc1(x))
+        x = torch.relu(self.fc1(x))
         x = self.dropout(x)
         x = torch.relu(self.fc2(x))
         x = self.dropout(x)
-        x = torch.tanh(self.fc3(x))
-        x = self.dropout(x)
-        return self.fc4(x)  
-    
-class MLPRegressionTanhReluTanhRelu(nn.Module):
-    def __init__(self, input_dim, output_dim, hidden_dim=2048, dropout_rate=0.1):
-        super(MLPRegressionTanhReluTanhRelu, self).__init__()
-        self.dropout = nn.Dropout(dropout_rate)
-        
-        self.fc1 = nn.Linear(input_dim, hidden_dim)
-        self.fc2 = nn.Linear(hidden_dim, hidden_dim)
-        self.fc3 = nn.Linear(hidden_dim, hidden_dim // 2)
-        self.fc4 = nn.Linear(hidden_dim // 2, output_dim)
-
-    def forward(self, x):
-        x = torch.tanh(self.fc1(x))
-        x = self.dropout(x)
-        x = torch.relu(self.fc2(x))
-        x = self.dropout(x)
-        x = torch.tanh(self.fc3(x))
-        x = self.dropout(x)
-        return torch.relu(self.fc4(x))
-    
+        return torch.nn.functional.softplus(self.fc3(x))
 
 class CNNRegression(nn.Module):
     def __init__(self, input_dim, output_dim, kernel_size, hidden_dim, dropout_rate):
