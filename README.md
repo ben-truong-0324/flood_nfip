@@ -9,6 +9,7 @@ In this project, we aim to predict flood risk and the corresponding insurance pr
 
 
 ## Installation and Setup
+Setup your local MYSQL configs in .env_sample and rename it to .env
 
 ### **Setting up the Conda Environment**
 
