@@ -1,0 +1,9 @@
+[flake8]
+max-line-length = 88
+
+exclude = .git,__pycache__,venv,env
+
+# Enable the built-in flake8 plugins for better linting
+select = C,E,F,W,B,C90
+
+ignore = E203, E266, E501, W503
