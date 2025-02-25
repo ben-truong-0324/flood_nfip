@@ -22,6 +22,9 @@ dependencies:
   - mysql-connector-python 
   - mysql
   - python-dotenv
+  - flake8
+  - pytest
+  - pytest-cov
 
     # - scikit-learn 
     # - bayesian-optimization
