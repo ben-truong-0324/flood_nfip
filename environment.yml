@@ -3,6 +3,7 @@ channels:
   - pytorch
   - nvidia
   - defaults
+  - conda-forge
 dependencies:
   - pytorch
   # - pytorch-cuda=12.4
