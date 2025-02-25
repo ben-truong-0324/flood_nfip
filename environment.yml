@@ -19,5 +19,9 @@ dependencies:
   - xgboost
   - imbalanced-learn
   - optuna
+  - mysql-connector-python 
+  - mysql
+  - python-dotenv
+
     # - scikit-learn 
     # - bayesian-optimization

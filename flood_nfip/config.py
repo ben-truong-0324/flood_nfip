@@ -10,14 +10,11 @@ else:
 import os
 
 
-# CALENDAR_PATH = os.path.join(os.getcwd(), 'data', 'calendar.csv')
-# INVENTORY_PATH = os.path.join(os.getcwd(), 'data', 'inventory.csv')
+ORIGINAL_PATH = os.path.join(os.getcwd(), 'data', 'FimaNfipClaims.csv')
 TRAIN_PATH = os.path.join(os.getcwd(), 'data', 'train.csv')
-
 TEST_PATH = os.path.join(os.getcwd(), 'data', 'test.csv')
 
-# Global ETL Version
-ETL_VERSION = 'v2'  
+ETL_VERSION = 'v1'
 
 # Define paths for processed datasets based on ETL_version
 PROCESSED_TRAIN_PATH = os.path.join(os.getcwd(), 'data', f'train_processed_{ETL_VERSION}.csv')
@@ -77,3 +74,24 @@ MODEL_ALL_LOG_FILE = os.path.join(os.getcwd(), TXT_OUTDIR, 'all_models_logs.txt'
 
 #ML PARAMS
 K_FOLD_CV = 5
+
+
+from dotenv import load_dotenv
+load_dotenv()
+
+MYSQL_USER = os.getenv('MYSQL_USER')
+MYSQL_PASSWORD = os.getenv('MYSQL_PASSWORD')
+MYSQL_HOST = os.getenv('MYSQL_HOST')
+MYSQL_PORT = os.getenv('MYSQL_PORT')
+MYSQL_DB_NAME = os.getenv('MYSQL_DB_NAME')
+MYSQL_TABLE_NAME = os.getenv('MYSQL_TABLE_NAME')
+
+MYSQL_CONFIG = {
+    'user': MYSQL_USER,    
+    'password': MYSQL_PASSWORD, 
+    'host':MYSQL_HOST,    
+    'port': MYSQL_PORT,
+    'database': MYSQL_DB_NAME, 
+    'raise_on_warnings': True,
+}
+
